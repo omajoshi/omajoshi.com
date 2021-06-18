@@ -7,7 +7,7 @@
 *.pot
 *.pyc
 __pycache__/
-debate/local_settings.py
+website/local_settings.py
 db.sqlite3
 media
 /static
