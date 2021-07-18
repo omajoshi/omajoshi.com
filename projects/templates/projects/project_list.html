@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block page_heading %}
+Projects
+{% endblock %}
+{% block content %}
+Projects
+{% for project in project_list %}
+<h2>{{ project.title }}</h2>
+<p>{{ project.description }}</p>
+{% endfor %}
+{% endblock %}
