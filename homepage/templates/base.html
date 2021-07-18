@@ -12,27 +12,27 @@
 <body class='bg-dark text-light'>
     <nav class='navbar navbar-expand-lg navbar-dark bg-secondary'>
         <div class='container-fluid'>
-            <a class='navbar-brand' href='#'>
-                <img src='/docs/5.0/assets/brand/bootstrap-logo.svg' alt='' width='30' height='24'
+            <a class='navbar-brand' href='{% url 'homepage:homepage' %}'>
+                <img src='' alt='' width='30' height='24'
                     class='d-inline-block align-text-top'>
                 Om's Observations
             </a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="{% url 'homepage:homepage' %}">Home</a>
+                    <a class="nav-link" href="{% url 'homepage:homepage' %}">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'homepage:course_list' %}">Courses</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="{% url 'homepage:book_list' %}">Books</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="{% url 'homepage:course_list' %}" tabindex="-1" aria-disabled="true">Courses</a>
-                  </li>
-                  <li class="nav-item">
                     <a class="nav-link" href="{% url 'projects:project_list' %}">Projects</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Interesting Quotes</a>
+                    <a class="nav-link" href="{% url 'homepage:quote_list' %}">Quotes</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Blog</a>

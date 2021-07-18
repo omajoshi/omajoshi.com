@@ -51,3 +51,6 @@ class Book(models.Model):
 class Quote(models.Model):
     quote = models.TextField()
     source = models.CharField(max_length=200, blank=True)
+
+    def __str__(self):
+        return f"{self.quote.split(':',1)[0]}, {self.source}"

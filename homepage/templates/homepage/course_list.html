@@ -3,4 +3,14 @@
 Courses
 {% endblock %}
 {% block content %}
+{% for semester in semester_list %}
+{% if semester.course_set.exists %}
+<h3 class="text-center">{{ semester }}</h3>
+<p>{{ semester.description }}</p>
+{% for course in semester.course_set %}
+<h4>{{ course }}</h4>
+<p>{{ course.description }}</p>
+{% endfor %}
+{% endif %}
+{% endfor %}
 {% endblock %}
