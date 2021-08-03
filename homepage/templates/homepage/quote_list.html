@@ -7,11 +7,12 @@ Quotes
 <p>Sometimes when watching a show or movie I will come across a line that I enjoy or appreciate. Here's a collection of those quotes, in no particular order,</p>
 {% for quote in quote_list %}
 <hr>
-From <i>{{ quote.source }}</i>
+<p>From <i>{{ quote.source }}</i></p>
 <div class="row">
 <div class="col-sm-2"></div>
 <div class="col-sm-8"><p>{{ quote.quote|linebreaks }}</p></div>
 <div class="col-sm-2"></div>
+</div>
 {% endfor %}
 {% endif %}
 {% endblock %}

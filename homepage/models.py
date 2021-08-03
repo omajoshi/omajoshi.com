@@ -26,8 +26,11 @@ class Course(models.Model):
     def __str__(self):
         return f'{self.code}. {self.title} ({self.semester})'
 
+    def code_and_title(self):
+        return f'{self.code}. {self.title}'
+
     class Meta:
-        ordering = ['semester']
+        ordering = ['semester', 'code']
 
 
 class Book(models.Model):

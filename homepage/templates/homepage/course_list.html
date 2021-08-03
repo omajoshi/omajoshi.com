@@ -5,11 +5,13 @@ Courses
 {% block content %}
 {% for semester in semester_list %}
 {% if semester.course_set.exists %}
-<h3 class="text-center">{{ semester }}</h3>
+<hr>
+<h4 class="text-center">{{ semester }}</h4>
 <p>{{ semester.description }}</p>
-{% for course in semester.course_set %}
-<h4>{{ course }}</h4>
-<p>{{ course.description }}</p>
+{% for course in semester.course_set.all %}
+<hr>
+<h6 id="{{ course.code }}">{{ course.code_and_title }}, taught by {{ course.professor }}</h6>
+<p>{{ course.description|safe }}</p>
 {% endfor %}
 {% endif %}
 {% endfor %}
