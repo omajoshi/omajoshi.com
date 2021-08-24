@@ -9,19 +9,19 @@ Textbooks
 
 {% if books_in_progress or books_completed %}
 <hr>
-<h3 class="text-center">In Progress</h4>
+<h4 class="text-center">In Progress</h4>
 {% for book in books_in_progress %}
 <hr>
-<h4><i>{{ book.title }}</i> by {{ book.author }} ({{ book.field }})</h3>
+<h6><i>{{ book.title }}</i> by {{ book.author }} ({{ book.field }})</h6>
 <p>{{ book.description }}</p>
 {% endfor %}
 {% endif %}
 {% if books_completed %}
 <hr>
-<h4>Completed</h4>
+<h4 class="text-center">Completed</h4>
 {% for book in books_completed %}
 <hr>
-<h4><i>{{ book.title }}</i> by {{ book.author }} ({{ book.field }})</h3>
+<h6><i>{{ book.title }}</i> by {{ book.author }} ({{ book.field }})</h6>
 <p>{{ book.description }}</p>
 {% endfor %}
 {% endif %}

@@ -1,8 +1,10 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
-from django.urls import reverse
-from django.views.generic import ListView, TemplateView
+from django.urls import reverse, reverse_lazy
+from django.views.generic import ListView, TemplateView, DetailView
+from django.views.generic.edit import UpdateView, CreateView
 
-from .models import Book, Course, Semester, Quote
+from .models import Book, Course, Semester, Quote, JournalEntry
 
 # Create your views here.
 
@@ -11,7 +13,14 @@ class Homepage(TemplateView):
 
 class BookList(ListView):
     model = Book
-    
+
+    def get_context_data(self, *args, **kwargs):
+        data = super().get_context_data(*args, **kwargs)
+        data["books_completed"] = Book.objects.filter(in_progress=False)
+        data["books_in_progress"] = Book.objects.filter(in_progress=True)
+        return data
+
+
 class CourseList(ListView):
     model = Semester
     template_name = 'homepage/course_list.html'
@@ -24,3 +33,31 @@ def quote_add(request):
     source = request.GET.get('source', '')
     url = f"{reverse('admin:homepage_quote_add')}?quote={quote}&source={source}"
     return redirect(url)
+
+
+class AdminRequiredMixin(LoginRequiredMixin):#UserPassesTestMixin):
+    raise_exception = True
+    #def test_func(self):
+        #return self.request.user.is_superuser
+
+
+class Journal(AdminRequiredMixin, ListView):
+    model = JournalEntry
+    ordering = ['-date']
+    paginate_by = 14
+
+
+class JournalAdd(AdminRequiredMixin, CreateView):
+    model = JournalEntry
+    fields = ['date', 'contents']
+    success_url = reverse_lazy('homepage:journal')
+
+
+class JournalUpdate(AdminRequiredMixin, UpdateView):
+    model = JournalEntry
+    fields = ['date', 'contents']
+    success_url = reverse_lazy('homepage:journal')
+
+
+class JournalDetail(AdminRequiredMixin, DetailView):
+    model = JournalEntry

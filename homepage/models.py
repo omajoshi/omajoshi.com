@@ -9,7 +9,7 @@ class Semester(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     class Meta:
         ordering = ["-code"]
 
@@ -57,3 +57,14 @@ class Quote(models.Model):
 
     def __str__(self):
         return f"{self.quote.split(':',1)[0]}, {self.source}"
+
+
+class JournalEntry(models.Model):
+    date = models.DateField()
+    contents = models.TextField()
+
+    def __str__(self):
+        return f"Entry for {self.date:%m/%d/%Y}"
+
+    class Meta:
+        verbose_name_plural = "journal entries"
