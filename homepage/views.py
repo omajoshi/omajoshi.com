@@ -4,7 +4,7 @@ from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, TemplateView, DetailView
 from django.views.generic.edit import UpdateView, CreateView
 
-from .models import Book, Course, Semester, Quote, JournalEntry
+from .models import Book, Course, Semester, Quote, JournalEntry, JournalForm
 
 # Create your views here.
 
@@ -49,13 +49,13 @@ class Journal(AdminRequiredMixin, ListView):
 
 class JournalAdd(AdminRequiredMixin, CreateView):
     model = JournalEntry
-    fields = ['date', 'contents']
+    form_class = JournalForm
     success_url = reverse_lazy('homepage:journal')
 
 
 class JournalUpdate(AdminRequiredMixin, UpdateView):
     model = JournalEntry
-    fields = ['date', 'contents']
+    form_class = JournalForm
     success_url = reverse_lazy('homepage:journal')
 
 

@@ -1,29 +1,45 @@
 {% extends 'base.html' %}
 {% block page_heading %}
-Textbooks
+Books
 {% endblock %}
 {% block content %}
 <p>I enjoy collecting and reading/skimming textbooks. Sometimes it's to prepare for a course, and other times it's to learn more about an intriguing subject. More recently, I solve the problems at the end of each chapter. I usually don't understand everything, but each time I (re)read a book I gain some new insight, and that's all I really need.</p>
 
 <p>Two resources that I have found quite helpful for my self-study are the <a href="https://www.ocf.berkeley.edu/~abhishek/chicmath.htm">Chicago undergraduate mathematics bibliography</a> and the <a href="https://www.ocf.berkeley.edu/~abhishek/chicphys.htm">Chicago Undergraduate Physics Bibliography</a>.
 
-{% if books_in_progress or books_completed %}
+<p>I am also trying to read more, so I'm adding a list of (non-text)books I have completed or am currently reading.</p>
+
+{% if books_in_progress %}
 <hr>
 <h4 class="text-center">In Progress</h4>
+<div class="accordion">
 {% for book in books_in_progress %}
-<hr>
-<h6><i>{{ book.title }}</i> by {{ book.author }} ({{ book.field }})</h6>
-<p>{{ book.description }}</p>
+<div class="accordion-item">
+<h6 class="accordion-header"><button class="accordion-button collapsed bg-secondary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#book_{{ book.id }}_collapse" aria-expanded="false" aria-controls="book_{{ book.id }}_collapse"><span><i>{{ book.title }}</i> by {{ book.author }} ({{ book.field }})</span></button></h6>
+{% if book.description %}
+<div id="book_{{ book.id }}_collapse" class="accordion-collapse collapse"><div class="accordion-body bg-dark">{{ book.description|safe|linebreaks }}</div></div>
+{% else %}
+<div id="book_{{ book.id }}_collapse" class="accordion-collapse collapse"><div class="accordion-body bg-dark">Review incoming ...</div></div>
+{% endif %}
+</div>
 {% endfor %}
+</div>
 {% endif %}
 {% if books_completed %}
 <hr>
 <h4 class="text-center">Completed</h4>
+<div class="accordion">
 {% for book in books_completed %}
-<hr>
-<h6><i>{{ book.title }}</i> by {{ book.author }} ({{ book.field }})</h6>
-<p>{{ book.description }}</p>
+<div class="accordion-item">
+<h6 class="accordion-header"><button class="accordion-button collapsed bg-secondary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#book_{{ book.id }}_collapse" aria-expanded="false" aria-controls="book_{{ book.id }}_collapse"><span><i>{{ book.title }}</i> by {{ book.author }} - {{ book.field }} ({{ book.year_completed }})</h6></span></button></h6>
+{% if book.description %}
+<div id="book_{{ book.id }}_collapse" class="accordion-collapse collapse"><div class="accordion-body bg-dark">{{ book.description|safe|linebreaks }}</div></div>
+{% else %}
+<div id="book_{{ book.id }}_collapse" class="accordion-collapse collapse"><div class="accordion-body bg-dark">Review incoming ...</div></div>
+{% endif %}
+</div>
 {% endfor %}
+</div>
 {% endif %}
 
 {% endblock %}

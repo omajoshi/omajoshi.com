@@ -4,7 +4,13 @@ Journal Entries
 {% endblock %}
 {% block content %}
 <form method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Save">
+<table>
+    {{ form.as_table }}
+</table>
+<div class="row">
+    <div class="col-sm-12">
+        <input type="submit" class="btn btn-primary float-sm-start" value="Save" />
+    </div>
+</div>
 </form>
 {% endblock %}

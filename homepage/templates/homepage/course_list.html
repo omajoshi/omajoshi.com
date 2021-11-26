@@ -8,10 +8,16 @@ Courses
 <hr>
 <h4 class="text-center">{{ semester }}</h4>
 <p>{{ semester.description }}</p>
+<div class="accordion">
 {% for course in semester.course_set.all %}
-<hr>
-<h6 id="{{ course.code }}">{{ course.code_and_title }}, taught by {{ course.professor }}</h6>
-<p>{{ course.description|safe }}</p>
+<div class="accordion-item">
+<h6 id="{{ course.code }}" class="accordion-header"><button class="accordion-button collapsed bg-secondary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#course_{{ course.id }}_collapse" aria-expanded="false" aria-controls="course_{{ course.id }}_collapse"><span>{{ course.code_and_title }}, taught by {{ course.professor }}</span></button></h6>
+{% if course.description %}
+<div id="course_{{ course.id }}_collapse" class="accordion-collapse collapse"><div class="accordion-body bg-dark">{{ course.description|safe|linebreaks }}</div></div>
+{% else %}
+<div id="course_{{ course.id }}_collapse" class="accordion-collapse collapse"><div class="accordion-body bg-dark">Review incoming ...</div></div>
+{% endif %}
+</div>
 {% endfor %}
 {% endif %}
 {% endfor %}

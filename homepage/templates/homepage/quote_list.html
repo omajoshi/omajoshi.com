@@ -4,10 +4,12 @@ Quotes
 {% endblock %}
 {% block content %}
 {% if quote_list.exists %}
-<p>Sometimes when watching a show or movie I will come across a line that I enjoy or appreciate. Here's a collection of those quotes, in no particular order,</p>
+<p>Sometimes, when watching a show or movie, I will find a scene or line to be particularly enjoyable. And other times, I will see or hear something memorable and want to write it down for future reference. Here's a collection of such quotes, in ascending order by date of entry.</p>
 {% for quote in quote_list %}
 <hr>
+{% if quote.source %}
 <p>From <i>{{ quote.source }}</i></p>
+{% endif %}
 <div class="row">
 <div class="col-sm-2"></div>
 <div class="col-sm-8"><p>{{ quote.quote|linebreaks }}</p></div>

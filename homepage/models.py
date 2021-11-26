@@ -1,4 +1,5 @@
 from django.db import models
+from django import forms
 
 # Create your models here.
 
@@ -39,9 +40,12 @@ class Book(models.Model):
     field = models.CharField(max_length=100)
     description = models.TextField(blank=True)
     in_progress = models.BooleanField()
+    year_completed = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
-        return f'{self.title} by {self.author}'
+        if self.in_progress:
+            return f'{self.title} by {self.author}'
+        return f'{self.title} by {self.author} - {self.field} ({self.year_completed})'
 
     class Meta:
         ordering = ['title']
@@ -56,7 +60,9 @@ class Quote(models.Model):
     source = models.CharField(max_length=200, blank=True)
 
     def __str__(self):
-        return f"{self.quote.split(':',1)[0]}, {self.source}"
+        if self.source:
+            return f"{self.quote.split(':',1)[0]}, {self.source}"
+        return self.quote.split(':',1)[0]
 
 
 class JournalEntry(models.Model):
@@ -68,3 +74,16 @@ class JournalEntry(models.Model):
 
     class Meta:
         verbose_name_plural = "journal entries"
+
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+
+class JournalForm(forms.ModelForm):
+    class Meta:
+        model = JournalEntry
+        fields = ['date', 'contents']
+        widgets = {
+            'date': DateInput(),
+        }

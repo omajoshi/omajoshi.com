@@ -5,7 +5,7 @@ Journal Entries
 {% block content %}
 <div class="row">
     <div class="col-sm-12">
-        <a href="{% url 'homepage:journal_add' %}" class="btn btn-primary float-sm-right" type="submit">Add</a>
+        <a href="{% url 'homepage:journal_add' %}" class="btn btn-primary float-sm-start" type="submit">Add</a>
     </div>
 </div>
 
@@ -16,6 +16,11 @@ Journal Entries
 <div class="col-sm-2"></div>
 <div class="col-sm-8"><p>{{ entry.contents|linebreaks }}</p></div>
 <div class="col-sm-2"></div>
+<div class="row">
+    <div class="col-sm-12">
+        <a href="{% url 'homepage:journal_update' entry.pk %}" class="btn btn-info float-sm-end">Edit</a>
+    </div>
+</div>
 </div>
 {% endfor %}
 <div class="pagination">
