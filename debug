@@ -1,0 +1,2 @@
+#/bin/bash
+python manage.py runserver --settings=website.debug_settings 0:8000

@@ -17,9 +17,9 @@ Books
 <div class="accordion-item">
 <h6 class="accordion-header"><button class="accordion-button collapsed bg-secondary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#book_{{ book.id }}_collapse" aria-expanded="false" aria-controls="book_{{ book.id }}_collapse"><span><i>{{ book.title }}</i> by {{ book.author }} ({{ book.field }})</span></button></h6>
 {% if book.description %}
-<div id="book_{{ book.id }}_collapse" class="accordion-collapse collapse"><div class="accordion-body bg-dark">{{ book.description|safe|linebreaks }}</div></div>
+<div id="book_{{ book.id }}_collapse" class="accordion-collapse collapse show"><div class="accordion-body bg-dark">{{ book.description|safe|linebreaks }}</div></div>
 {% else %}
-<div id="book_{{ book.id }}_collapse" class="accordion-collapse collapse"><div class="accordion-body bg-dark">Review incoming ...</div></div>
+<div id="book_{{ book.id }}_collapse" class="accordion-collapse collapse show"><div class="accordion-body bg-dark">Review incoming ...</div></div>
 {% endif %}
 </div>
 {% endfor %}
@@ -33,9 +33,9 @@ Books
 <div class="accordion-item">
 <h6 class="accordion-header"><button class="accordion-button collapsed bg-secondary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#book_{{ book.id }}_collapse" aria-expanded="false" aria-controls="book_{{ book.id }}_collapse"><span><i>{{ book.title }}</i> by {{ book.author }} - {{ book.field }} ({{ book.year_completed }})</h6></span></button></h6>
 {% if book.description %}
-<div id="book_{{ book.id }}_collapse" class="accordion-collapse collapse"><div class="accordion-body bg-dark">{{ book.description|safe|linebreaks }}</div></div>
+<div id="book_{{ book.id }}_collapse" class="accordion-collapse collapse show"><div class="accordion-body bg-dark">{{ book.description|safe|linebreaks }}</div></div>
 {% else %}
-<div id="book_{{ book.id }}_collapse" class="accordion-collapse collapse"><div class="accordion-body bg-dark">Review incoming ...</div></div>
+<div id="book_{{ book.id }}_collapse" class="accordion-collapse collapse show"><div class="accordion-body bg-dark">Review incoming ...</div></div>
 {% endif %}
 </div>
 {% endfor %}
