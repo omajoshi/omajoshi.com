@@ -7,7 +7,7 @@ Blog
 {% for post in post_list %}
 <hr>
 <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
-<p>{{ post.created|date:"M d, Y" }}</p>
+<p>{{ post.created|date:"F d, Y" }}</p>
 {{ post.content|safe|linebreaks|truncatewords_html:100 }}
 <a href="{{ post.get_absolute_url }}">... read more ...</a>
 {% endfor %}
