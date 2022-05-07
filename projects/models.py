@@ -8,8 +8,8 @@ class Project(models.Model):
     start_date = models.DateField()
     end_date = models.DateField(null=True, blank=True)
     in_progress = models.BooleanField()
-    blogpost = models.ForeignKey('blog.Post', on_delete=models.CASCADE)
-    link = models.URLField()
+    blogpost = models.ForeignKey('blog.Post', on_delete=models.CASCADE, null=True, blank=True)
+    link = models.URLField(null=True, blank=True)
 
     def __str__(self):
         return self.title
@@ -19,4 +19,4 @@ class Project(models.Model):
 
 class Image(models.Model):
     # image = models.ImageField()
-    project = models.ForeignKey('Project', on_delete=models.CASCADE)
+    project = models.ForeignKey('Project', on_delete=models.CASCADE, null=True, blank=True)
