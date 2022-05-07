@@ -3,9 +3,47 @@
 Projects
 {% endblock %}
 {% block content %}
-Projects
+<p>Here are some of my projects. If available, links to the project on the web, the corresponding blog post on this site, and the source code can be found below the description.</p>
+<hr>
+{% if project_list %}
+<div class="accordion">
 {% for project in project_list %}
-<h2>{{ project.title }}</h2>
-<p>{{ project.description }}</p>
+<div class="accordion-item">
+<h6 class="accordion-header"><button class="accordion-button collapsed bg-secondary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#project_{{ project.id }}_collapse" aria-expanded="false" aria-controls="project_{{ project.id }}_collapse"><span>{{ project.title }} ({{ project.start_date }}-{% if project.end_date %}{{ project.end_date }}{% endif %})</h6></span></button></h6>
+{% if project.description %}
+<div id="project_{{ project.id }}_collapse" class="accordion-collapse collapse show">
+    <div class="accordion-body bg-dark">
+        {{ project.description|safe|linebreaks }}
+        <hr>
+        {% if project.link %}
+        <div><a href="{{ project.link }}">Link to project</a></div>
+        {% endif %}
+        {% if project.blogpost %}
+        <div><a href="{{ project.blogspot.get_absolute_url }}">Blog post</a></div>
+        {% endif %}
+        {% if project.source %}
+        <div><a href="{{ project.blogspot.source }}">Source code</a></div>
+        {% endif %}
+    </div>
+</div>
+{% else %}
+<div id="project_{{ project.id }}_collapse" class="accordion-collapse collapse show">
+    <div class="accordion-body bg-dark">
+        Description incoming ...
+        <hr>
+        {% if project.link %}
+        <div>Project link: <a href="{{ project.link }}">{{ project.link }}</a></div>
+        {% endif %}
+        {% if project.blogpost %}
+        <div>Blog post: <a href="{{ project.blogspot.get_absolute_url }}">{{ project.blogspot.title }}</a></div>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+</div>
 {% endfor %}
+</div>
+{% else %}
+{% endif %}
+
 {% endblock %}

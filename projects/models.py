@@ -10,6 +10,7 @@ class Project(models.Model):
     in_progress = models.BooleanField()
     blogpost = models.ForeignKey('blog.Post', on_delete=models.CASCADE, null=True, blank=True)
     link = models.URLField(null=True, blank=True)
+    source = models.URLField(null=True, blank=True)
 
     def __str__(self):
         return self.title
