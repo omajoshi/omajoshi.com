@@ -9,6 +9,11 @@ Blog
 <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
 <p>{{ post.created|date:"M d, Y" }}</p>
 {{ post.content|safe|linebreaks|truncatewords_html:100 }}
+<div class="row">
+    <div class="col-sm-12">
+        <a href="{{ post.get_absolute_url }}" class="btn btn-primary float-sm-end">Read More</a>
+    </div>
+</div>
 {% endfor %}
 <hr>
 <div class="pagination">
