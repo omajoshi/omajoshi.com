@@ -8,7 +8,7 @@
         <a href="{% url 'blog:post_list' %}" class="btn btn-primary float-sm-start">Blog Home</a>
     </div>
 </div>
-<p>{{ post.created|date:"M d, Y" }}</p>
 <hr>
+<p>{{ post.created|date:"M d, Y" }}</p>
 {{ post.content|safe|linebreaks }}
 {% endblock %}
