@@ -43,7 +43,6 @@ class AdminRequiredMixin(LoginRequiredMixin):#UserPassesTestMixin):
 
 class Journal(AdminRequiredMixin, ListView):
     model = JournalEntry
-    ordering = ['-date']
     paginate_by = 14
 
 

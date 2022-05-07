@@ -19,10 +19,10 @@ Projects
         <div><a href="{{ project.link }}">Link to project</a></div>
         {% endif %}
         {% if project.blogpost %}
-        <div><a href="{{ project.blogspot.get_absolute_url }}">Blog post</a></div>
+        <div><a href="{{ project.blogpost.get_absolute_url }}">Blog post</a></div>
         {% endif %}
         {% if project.source %}
-        <div><a href="{{ project.blogspot.source }}">Source code</a></div>
+        <div><a href="{{ project.blogpost.source }}">Source code</a></div>
         {% endif %}
     </div>
 </div>
@@ -32,10 +32,13 @@ Projects
         Description incoming ...
         <hr>
         {% if project.link %}
-        <div>Project link: <a href="{{ project.link }}">{{ project.link }}</a></div>
+        <div><a href="{{ project.link }}">Link to project</a></div>
         {% endif %}
         {% if project.blogpost %}
-        <div>Blog post: <a href="{{ project.blogspot.get_absolute_url }}">{{ project.blogspot.title }}</a></div>
+        <div><a href="{{ project.blogpost.get_absolute_url }}">Blog post</a></div>
+        {% endif %}
+        {% if project.source %}
+        <div><a href="{{ project.blogpost.source }}">Source code</a></div>
         {% endif %}
     </div>
 </div>
@@ -43,7 +46,6 @@ Projects
 </div>
 {% endfor %}
 </div>
-{% else %}
 {% endif %}
 
 {% endblock %}

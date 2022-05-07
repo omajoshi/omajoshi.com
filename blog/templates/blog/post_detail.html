@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block page_heading %}
+{{ post.title }}
+{% endblock %}
+{% block content %}
+<p>Posted {{ post.created|date:"m/d/y" }}</p>
+{{ post.content|linebreaks|safe }}
+{% endblock %}

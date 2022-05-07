@@ -74,6 +74,7 @@ class JournalEntry(models.Model):
 
     class Meta:
         verbose_name_plural = "journal entries"
+        ordering = ['-date']
 
 
 class DateInput(forms.DateInput):
