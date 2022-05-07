@@ -8,7 +8,7 @@ Blog
 <hr>
 <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
 <p>{{ post.created|date:"M d, Y" }}</p>
-{{ post.content|truncatewords_html:100|safe }}
+{{ post.content|safe|linebreaks|truncatewords_html:100 }}
 {% endfor %}
 <hr>
 <div class="pagination">

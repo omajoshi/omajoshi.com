@@ -3,7 +3,12 @@
 {{ post.title }}
 {% endblock %}
 {% block content %}
+<div class="row">
+    <div class="col-sm-12">
+        <a href="{% url 'blog:post_list' %}" class="btn btn-primary float-sm-start">Blog Home</a>
+    </div>
+</div>
 <p>{{ post.created|date:"M d, Y" }}</p>
 <hr>
-{{ post.content|safe }}
+{{ post.content|safe|linebreaks }}
 {% endblock %}

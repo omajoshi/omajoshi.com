@@ -11,7 +11,7 @@ class Post(models.Model):
     content = models.TextField(blank=True)
 
     def __str__(self):
-        return f'{self.title}, created {self.created}'
+        return f'{self.title}, posted {self.created:%M %d, %Y}'
 
     def get_absolute_url(self):
         return reverse("blog:post_detail", kwargs={"pk": self.pk})
