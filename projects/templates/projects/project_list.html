@@ -9,7 +9,7 @@ Projects
 <div class="accordion">
 {% for project in project_list %}
 <div class="accordion-item">
-<h6 class="accordion-header"><button class="accordion-button collapsed bg-secondary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#project_{{ project.id }}_collapse" aria-expanded="false" aria-controls="project_{{ project.id }}_collapse"><span>{{ project.title }} ({{ project.start_date }}-{% if project.end_date %}{{ project.end_date }}{% endif %})</h6></span></button></h6>
+<h6 class="accordion-header"><button class="accordion-button collapsed bg-secondary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#project_{{ project.id }}_collapse" aria-expanded="false" aria-controls="project_{{ project.id }}_collapse"><span>{{ project.title }} ({{ project.start_date|date:"m/Y" }}-{% if project.end_date %}{{ project.end_date|date:"m/Y" }}{% else %}Present{% endif %})</h6></span></button></h6>
 {% if project.description %}
 <div id="project_{{ project.id }}_collapse" class="accordion-collapse collapse show">
     <div class="accordion-body bg-dark">
