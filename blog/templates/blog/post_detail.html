@@ -3,6 +3,7 @@
 {{ post.title }}
 {% endblock %}
 {% block content %}
-<p>Posted {{ post.created|date:"m/d/y" }}</p>
-{{ post.content|linebreaks|safe }}
+<p>{{ post.created|date:"M d, Y" }}</p>
+<hr>
+{{ post.content|safe }}
 {% endblock %}
