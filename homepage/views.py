@@ -1,15 +1,33 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
+from django.utils.timezone import get_current_timezone
 from django.views.generic import ListView, TemplateView, DetailView
 from django.views.generic.edit import UpdateView, CreateView
 
+from django.conf import settings
+
 from .models import Book, Course, Semester, Quote, JournalEntry, JournalForm
+
+from blog.models import Post
+
+import datetime
 
 # Create your views here.
 
 class Homepage(TemplateView):
     template_name = 'homepage/index.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        try:
+            p = Post.objects.latest('created')
+            if datetime.datetime.now(get_current_timezone()) - p.created <= datetime.timedelta(weeks=4):
+                context["post"] = p
+        except Post.DoesNotExist:
+            pass
+        return context
+    
 
 class BookList(ListView):
     model = Book

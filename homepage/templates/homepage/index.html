@@ -4,6 +4,10 @@ Om's Observations
 {% endblock %}
 {% block content %}
 <h2 class="text-center">by Om Joshi</h2>
+{% if post %}
+<hr>
+Latest blog post: <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>, posted {{ post.created|date:"F d, Y" }}
+{% endif %}
 <hr>
 <h3>Hi there! Welcome to my website! 👋</h3>
 <p>I am a second-year at The University of Texas at Austin, majoring in Electrical and Computer Engineering and Plan II Honors.</p>
