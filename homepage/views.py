@@ -20,12 +20,7 @@ class Homepage(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        try:
-            p = Post.objects.latest('created')
-            if datetime.datetime.now(get_current_timezone()) - p.created <= datetime.timedelta(weeks=4):
-                context["post"] = p
-        except Post.DoesNotExist:
-            pass
+        context["posts"] = Post.objects.filter(created__gte=datetime.datetime.now(get_current_timezone())-datetime.timedelta(weeks=26)).order_by('-created')
         return context
     
 

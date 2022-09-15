@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block page_heading %}
+Projects
+{% endblock %}
+{% block content %}
+<p>As stated on the homepage, I'm an undergraduate researcher in the Quantum Circuits Group, led by Professor Shyam Shankar of the ECE department at UT. The research group "builds superconducting and semiconducting quantum devices and circuits for applications in quantum information science and engineering," and this work is at the intersection of nanofabrication, superconductivity, and microwave engineering, among other fields.</p>
+<p>Here are some of the projects on which I've worked.</p>
+<hr>
+{% if researchproject_list %}
+<div class="accordion">
+{% for project in researchproject_list %}
+<div class="accordion-item">
+<h6 class="accordion-header"><button class="accordion-button collapsed bg-secondary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#project_{{ project.id }}_collapse" aria-expanded="false" aria-controls="project_{{ project.id }}_collapse"><span>{{ project.title }}{% if project.start_date or project.end_date %} ({% if project.start_date %}{{ project.start_date|date:"m/Y" }}{% endif %}-{% if project.end_date %}{{ project.end_date|date:"m/Y" }}{% else %}Present{% endif %}){% endif %}</h6></span></button></h6>
+{% if project.description %}
+<div id="project_{{ project.id }}_collapse" class="accordion-collapse collapse show">
+    <div class="accordion-body bg-dark">
+        {{ project.description|safe|linebreaks }}
+        <hr>
+        {% if project.link %}
+        <div><a href="{{ project.link }}">Link to project</a></div>
+        {% endif %}
+        {% if project.blogpost %}
+        <div><a href="{{ project.blogpost.get_absolute_url }}">Blog post</a></div>
+        {% endif %}
+        {% if project.source %}
+        <div><a href="{{ project.blogpost.source }}">Source code</a></div>
+        {% endif %}
+    </div>
+</div>
+{% else %}
+<div id="project_{{ project.id }}_collapse" class="accordion-collapse collapse show">
+    <div class="accordion-body bg-dark">
+        Description incoming ...
+        <hr>
+        {% if project.link %}
+        <div><a href="{{ project.link }}">Link to project</a></div>
+        {% endif %}
+        {% if project.blogpost %}
+        <div><a href="{{ project.blogpost.get_absolute_url }}">Blog post</a></div>
+        {% endif %}
+        {% if project.source %}
+        <div><a href="{{ project.blogpost.source }}">Source code</a></div>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+</div>
+{% endfor %}
+</div>
+{% endif %}
+
+{% endblock %}

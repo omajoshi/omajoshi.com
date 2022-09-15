@@ -4,18 +4,20 @@ Om's Observations
 {% endblock %}
 {% block content %}
 <h2 class="text-center">by Om Joshi</h2>
-{% if post %}
+{% if posts %}
 <hr>
-Latest blog post: <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>, posted {{ post.created|date:"F d, Y" }}
+<p>Latest <a href="{% url 'blog:post_list' %}">blog</a> posts:</p>
+{% for post in posts %}
+<p><a href="{{ post.get_absolute_url }}">{{ post.title }}</a>, posted {{ post.created|date:"F d, Y" }}</p>
+{% endfor %}
 {% endif %}
 <hr>
 <h3>Hi there! Welcome to my website! 👋</h3>
-<p>I am a second-year at The University of Texas at Austin, majoring in Electrical and Computer Engineering and Plan II Honors.</p>
+<p>I am a third-year at The University of Texas at Austin, majoring in Electrical Engineering, Plan II Honors, and Mathematics.</p>
 <p>I'm an undergraduate researcher in the <a href="https://sites.utexas.edu/shyamshankar/">Quantum Circuits Group</a>, led by Professor Shyam Shankar of the ECE department at UT. The research group "builds superconducting and semiconducting quantum devices and circuits for applications in quantum information science and engineering," and this work is at the intersection of nanofabrication, superconductivity, and microwave engineering, among other fields. I am currently working on some power electronics projects, including designing a custom power supply PCB (with many types of voltage regulators on-board) for our microwave electronics setup and building an affordable programmable power supply that is highly accurate and precise using consumer electronic components.</p>
-<p>This summer, I will also be working at Intel in The Numerical Hardware Group, a new applied research group within Intel's graphics group that focuses on computer arithmetic and mathematical hardware.</p>
+<p>This past summer, I worked at Intel in <a href="https://www.intel.com/content/www/us/en/developer/topic-technology/open/graphics-numerical-hardware/overview.html">The Numerical Hardware Group</a>, a new applied research group within Intel Graphics that focuses on computer arithmetic and mathematical hardware. <a href="{% url 'blog:post_detail' 11 %}">Somewhere within this long blog post I briefly talk about what I did</a>.</p>
 <hr>
-<p>Last fall, I took ECE courses on quantum mechanics, lasers, and linear systems and signals, part one of Plan II's philosophy sequence, an interdisciplinary course on quantum information science, and classical mechanics. I was also a violinist in the UT University Orchestra!</p>
-<p>This spring, I took introductory solid-state physics, electromagnetic engineering, part one of the undergraduate algebraic structures sequence, part two of the quantum information science course from last semester, a course on applied linear algebra, and part two of Plan II's philosophy sequence. I also continued playing the violin in the UT University Orchestra!</p> 
+<p>This fall, I'm taking a nanofabrication lab course, graduate courses on quantum electro-optics and numerical linear algebra, a Plan II seminar on constitutional design, a critical geography seminar focused on Eastern Europe and Eurasia, and a course on corporate governance. I'm also still playing my violin in the UT University Orchestra!</p>
 <p>Here's a detailed list of <a href="{% url 'homepage:course_list' %}">courses I've taken and some of my thoughts on them</a>.</p>
 <hr>
 <p>I also enjoy collecting and reading textbooks, and recently I've been trying to read more books (especially nonfiction and science fiction).</p>
@@ -26,13 +28,13 @@ Latest blog post: <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>, po
 <p>I just finished designing this new website! It's a major aesthetic upgrade from my previous homepage, which only had unstyled HTML. If you want, you can check out the <a href="https://github.com/omajoshi/omajoshi.com">source code</a>.</p>
 <p>Last year, I designed a <a href="https://iqt.txfa.org">tournament tabulation and point tracking program</a> for Texas' state high school speech and debate organization.</p>
 <p>I also developed and maintain an <a href="https://extemp.omajoshi.com">extemporaneous debate hosting platform</a> and have used it to host extemp draw at a few debate tournaments in my area.
-<p>Here are the rest of my <a href="{% url 'projects:project_list' %}">projects (page in progress)</a>.</p>
+<p>Here are the rest of my <a href="{% url 'projects:project_list' %}">projects</a>.</p>
 <hr>
 <h3 class="text-center">Writing</h3>
-<p>During the summer after junior year of high school, I started a blog so I could practice writing. I wrote a few posts about esoteric things like making a super PAC and exploring the Texas Administrative Code. Eventually I'll port it over to this site. Maybe I will also write more posts sometime.</p>
+<p>During the summer after junior year of high school, I started a blog so I could practice writing. I wrote a few posts about esoteric things like <a href="{% url 'blog:post_detail' 2 %}">making a super PAC</a> and <a href="{% url 'blog:post_detail' 7 %}">exploring the Texas Administrative Code</a>. Recently, I <a href="{% url 'blog:post_detail' 9 %}">rebooted the blog after rebuilding the engine using Django</a>. Here's a <a href="{% url 'blog:post_list' %}">link</a> to the blog homepage.</p>
 <hr>
 <h3 class="text-center">These are a Few Miscellaneous Things</h3>
-<p>As part of my recent foray into the Star Trek anthology, I started learning the Klingon language (via Duolingo).</p>
+<p>I'm a big fan of science fiction. As part of my recent foray into the Star Trek anthology, I started learning the Klingon language (via Duolingo). I also wrote a blog post in which I <a href="/blog/10/">ranked the <i>Star Trek</i> movies</a>.</p>
 <p>On weekend mornings, I enjoy going on long bike rides.</p>
 <p>Here is a <a href="{% url 'homepage:quote_list' %}">collection of quotes</a> that were memorable to me and that I enjoy rereading from time to time.</p>
 <hr>
