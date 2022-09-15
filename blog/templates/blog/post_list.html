@@ -6,10 +6,12 @@ Blog
 {% if post_list %}
 {% for post in post_list %}
 <hr>
+<div>
 <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
 <p>{{ post.created|date:"F d, Y" }}</p>
 {{ post.content|safe|linebreaks|truncatewords_html:100 }}
 <a href="{{ post.get_absolute_url }}">... read more ...</a>
+</div>
 {% endfor %}
 <hr>
 <div class="pagination">
