@@ -1,0 +1,6 @@
+#!/bin/bash
+DATE=$(date +%Y-%m-%dT%H:%M:%S)
+ROOT_DIR="/home/om/website/omajoshi.com"
+
+mkdir -p $ROOT_DIR/backups/$DATE
+cp $ROOT_DIR/db.sqlite3 $ROOT_DIR/backups/$DATE/db.sqlite3

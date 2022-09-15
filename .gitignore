@@ -14,6 +14,8 @@ media
 db.sqlite3
 backups/
 .vscode/
+backup.sh
+email_backup.py
 
 # If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/
 # in your Git repository. Update and uncomment the following line accordingly.

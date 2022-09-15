@@ -1,0 +1,30 @@
+#!/home/om/website/website_env/bin/python 
+
+# add to crontab
+# /home/om/website/omajoshi.com/backup.sh && /home/om/website/omajoshi.com/email_backup.py
+
+import datetime
+import pathlib
+import smtplib
+
+from email.message import EmailMessage
+
+date = datetime.datetime.now()
+
+SENDER_EMAIL = "omajoshi9@gmail.com"
+APP_PASSWORD = "xxxxxxx"
+
+email = EmailMessage()
+email['Subject'] = f'Weekly backup of omajoshi.com database ({date:%Y%m%d})'
+email['From'] = SENDER_EMAIL
+email['To'] = 'om@omajoshi.com'
+
+db_path = pathlib.Path(__file__).parent.resolve() / 'db.sqlite3'
+
+with open(db_path, 'rb') as f:
+    db_file = f.read()
+    email.add_attachment(db_file, maintype='application', subtype='vnd.sqlite3', filename=f'{date:%Y%m%d}.db.sqlite3')
+
+    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+        smtp.login(SENDER_EMAIL, APP_PASSWORD)
+        smtp.send_message(email)
