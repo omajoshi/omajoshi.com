@@ -10,8 +10,8 @@ Blog
 <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
 <p>{{ post.created|date:"F d, Y" }}</p>
 {{ post.content|safe|linebreaks|truncatewords_html:100 }}
-<a href="{{ post.get_absolute_url }}">... read more ...</a>
 </div>
+<a href="{{ post.get_absolute_url }}">... read more ...</a>
 {% endfor %}
 <hr>
 <div class="pagination">
