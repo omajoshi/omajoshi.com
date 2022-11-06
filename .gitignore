@@ -10,7 +10,7 @@ __pycache__/
 local_settings.py
 debug_settings.py
 media
-/static
+static/
 db.sqlite3
 backups/
 .vscode/
