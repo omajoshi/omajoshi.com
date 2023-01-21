@@ -11,6 +11,7 @@ local_settings.py
 debug_settings.py
 media
 /static/
+resized*
 db.sqlite3
 backups/
 .vscode/
