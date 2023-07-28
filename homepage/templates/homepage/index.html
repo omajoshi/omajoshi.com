@@ -8,7 +8,7 @@ Om's Observations
 <hr>
 <p>Latest <a href="{% url 'blog:post_list' %}">blog</a> posts:</p>
 {% for post in posts %}
-<p><a href="{{ post.get_absolute_url }}">{{ post.title }}</a>, posted {{ post.created|date:"F d, Y" }}</p>
+<p><a href="{{ post.get_absolute_url }}">{{ post.title|safe }}</a>, posted {{ post.created|date:"F d, Y" }}</p>
 {% endfor %}
 {% endif %}
 <hr>

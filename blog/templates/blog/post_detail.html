@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block page_heading %}
-{{ post.title }}
+{{ post.title|safe }}
 {% endblock %}
 {% block content %}
 <div class="row">
