@@ -8,7 +8,7 @@ Courses
 {% if semester.course_set.exists %}
 <hr>
 <h4 class="text-center">{{ semester }}</h4>
-<p>{{ semester.description }}</p>
+<p>{{ semester.description|safe }}</p>
 <div class="accordion">
 {% for course in semester.course_set.all %}
 <div class="accordion-item">
