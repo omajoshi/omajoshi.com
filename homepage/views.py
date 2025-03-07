@@ -22,15 +22,15 @@ class Homepage(TemplateView):
         context = super().get_context_data(**kwargs)
         context["posts"] = Post.objects.filter(created__gte=datetime.datetime.now(get_current_timezone())-datetime.timedelta(weeks=26)).order_by('-created')[:3]
         return context
-    
+
 
 class BookList(ListView):
     model = Book
 
     def get_context_data(self, *args, **kwargs):
         data = super().get_context_data(*args, **kwargs)
-        data["books_completed"] = Book.objects.filter(in_progress=False)
         data["books_in_progress"] = Book.objects.filter(in_progress=True)
+        data["books_completed"] = Book.objects.filter(in_progress=False).order_by('-year_completed', 'title')
         return data
 
 
