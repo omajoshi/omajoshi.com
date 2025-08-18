@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Blog | Om's Observations{% endblock %}
+{% block page_heading %}
+Blog
+{% endblock %}
+{% block content %}
+<a href="{% url 'blog:post_list' %}">List</a> of blog posts with previews.
+{% if post_list %}
+{% for post in post_list %}
+<hr>
+<div>
+<h3><a href="{{ post.get_absolute_url }}">{{ post.title|safe }}</a></h3>
+<p>{{ post.created|date:"F d, Y" }}</p>
+</div>
+{% endfor %}
+<hr>
+{% else %}
+The blog is currently empty. More content is coming soon!
+{% endif %}
+
+{% endblock %}

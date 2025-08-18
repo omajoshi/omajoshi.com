@@ -4,6 +4,7 @@
 Blog
 {% endblock %}
 {% block content %}
+<a href="{% url 'blog:post_list_title_only' %}">List</a> of blog posts without previews.
 {% if post_list %}
 {% for post in post_list %}
 <hr>
